@@ -9,7 +9,7 @@ import requests
 
 creds = Creds("credentials.csv")
 
-GIT_URL = "https://github.com/hsauers5/hellopython"
+GIT_URL = "https://github.com/prashh/static_website"
 
 REGION = "us-west-2"
 SECURITY_GROUP = "sg-0e66bd644483bd39c"

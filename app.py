@@ -12,8 +12,8 @@ creds = Creds("credentials.csv")
 GIT_URL = "https://github.com/prashh/static_website"
 
 REGION = "us-west-2"
-SECURITY_GROUP = "sg-0e66bd644483bd39c"
-IAM_PROFILE = "test-python"
+SECURITY_GROUP = "sg-076395e6c7d38888f"
+IAM_PROFILE = "aws_deployment_ec2"
 
 ec2 = boto3.client(
     'ec2',
@@ -31,7 +31,7 @@ def provision_server():
     instance_type = "t2.micro"
 
     # Make this a command-line argument in the future.
-    keypair_name = "test-python-deploy"
+    keypair_name = "aws_deployment_ec2"
 
     response = {}
     try:

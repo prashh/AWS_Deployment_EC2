@@ -152,7 +152,7 @@ print("Testing...")
 r = requests.get('http://' + URL + ':5000')
 if r.status_code != 200:
     raise Exception("Status Code not 200")
-if r.text != "Hello World":
+if r.text != "Automation for the people":
     raise Exception("Text does not match")
 
 print("Deployment Succeeded.")

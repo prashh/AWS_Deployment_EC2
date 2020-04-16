@@ -9,7 +9,7 @@ import requests
 
 creds = Creds("credentials.csv")
 
-GIT_URL = "https://github.com/prashh/static_website"
+GIT_URL = "https://github.com/prashh/awspython"
 
 REGION = "us-west-2"
 SECURITY_GROUP = "sg-076395e6c7d38888f"
@@ -88,7 +88,7 @@ def send_command_aws(commands=["echo hello"], instance="i-06cca6072e593a0ac"):
     )
 
 
-def generate_git_commands(git_url=GIT_URL, start_command="sudo python3 hellopython/app.py", pip3_packages=[], additional_commands=[]):
+def generate_git_commands(git_url=GIT_URL, start_command="sudo python3 awspython/app.py", pip3_packages=[], additional_commands=[]):
     commands = []
     if ".git" in git_url:
         git_url = git_url[:-4]
@@ -101,7 +101,7 @@ def generate_git_commands(git_url=GIT_URL, start_command="sudo python3 hellopyth
     commands.append("sudo apt-get install -y python3")
     commands.append("sudo apt-get install -y python3-pip")
 
-    commands.append("sudo rm -R hellopython")
+    commands.append("sudo rm -R awspython")
 
     commands.append("pip3 --version")
 
@@ -118,7 +118,7 @@ def generate_git_commands(git_url=GIT_URL, start_command="sudo python3 hellopyth
 
     # start program execution
     commands.append(start_command)
-
+    print(commands)
     return commands
 
 

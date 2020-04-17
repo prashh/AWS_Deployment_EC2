@@ -14,7 +14,7 @@ This allows us to use Amazon’s SDK in our Python application
 Github source:
   
   1. Create a static webapp and make it public.
-  2. use the clone url(HTTPS) to retrive the code for deployment.
+  2. Use the clone url(HTTPS) to retrive the code for deployment.
 
 
 AWS Credentials :

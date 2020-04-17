@@ -1,7 +1,7 @@
 # AWS_Deployment_EC2
 Static webpage hosting on AWS EC2 instance
 
-Prerequisites :
+**Prerequisites** :
   
   1.  Spin up your favorite Python IDE and create a new project.
   2.  Create your main project file and name it whatever you want — I chose “app.py” for simplicity.
@@ -11,13 +11,13 @@ Prerequisites :
 This allows us to use Amazon’s SDK in our Python application
  
  
-Github source:
+**Github source:**
   
   1. Create a static webapp and make it public.
   2. Use the clone url(HTTPS) to retrive the code for deployment.
 
 
-AWS Credentials :
+**AWS Credentials :**
 
 Before we can actually use anything on AWS, we need credentials for the AWS account.
 
@@ -30,7 +30,7 @@ Before we can actually use anything on AWS, we need credentials for the AWS acco
   7.  Download your security credentials (the CSV file) and copy it into your project’s root directory.
   
   
-Create key pairs :
+**Create key pairs :**
   1.  Head over to your AWS dashboard and go to EC2->Network & Security-> Key pairs
   2.  click “Create key pair.”
   3.  Enter a name and hit “Create.”
@@ -38,13 +38,13 @@ Create key pairs :
   
 To run commands on the server and open it to the Web, we have to create a security group and IAM role on AWS.    Go to your dashboard.
 
-Creating a security group :
+**Creating a security group :**
 
   1.  Navigate to Network & Security -> Security Groups.
   2.  Create a security group, and open ports 22, 80, 443, and 5000. This will allow general access to it from the Web. Allow all IPs to access them.
 
 
-Creating an IAM role:
+**Creating an IAM role:**
 
   1.  Go to your AWS dashboard and navigate to the IAM service.
   2.  Click on the “Roles” tab.
@@ -52,18 +52,18 @@ Creating an IAM role:
   4.  Click through the rest of the steps to create a role.
 
 
-How to run:
+**How to run:**
 
   Run the command : python app.py
   from the directory which contains the file.(it needs to contain the credentials.csv file     as well)
 
 
-What is running:
+**What is running:**
 
   It creates a EC2 instance on AWS with the given specifications with the web app deployed on the said URL until it is stopped or terminated
 
 
-How to cleanup:
+**How to cleanup:**
 
   Launch the console (log in as root) and navigate to the EC2 Dashboard ,Search for the instance that you created either by the public DNS that you use to test the webapp and right click on it -> Launch State -> Terminate.
 						 							

@@ -15,6 +15,7 @@ REGION = "us-west-2"
 SECURITY_GROUP = "sg-076395e6c7d38888f"
 IAM_PROFILE = "aws_deployment_ec2"
 
+#low-level client representing Amazon Elastic Compute Cloud 
 ec2 = boto3.client(
     'ec2',
     aws_access_key_id=creds.access_key_id,
@@ -30,11 +31,11 @@ def provision_server():
     # Second smallest instance, free tier eligible.
     instance_type = "t2.micro"
 
-    # Make this a command-line argument in the future.
     keypair_name = "aws_deployment_ec2"
 
     response = {}
     try:
+        #Launches the specified number of instances using an AMI for which you have permissions. 
         response = ec2.run_instances(ImageId=image_id,
                                      InstanceType=instance_type,
                                      KeyName=keypair_name,
@@ -60,6 +61,7 @@ def get_instance(instanceId):
 
 
 def send_command_aws(commands=["echo hello"], instance="i-06cca6072e593a0ac"):
+    #Simple Systems Manager 
     ssm_client = boto3.client('ssm',
                               aws_access_key_id=creds.access_key_id,
                               aws_secret_access_key=creds.secret_key,
@@ -76,17 +78,6 @@ def send_command_aws(commands=["echo hello"], instance="i-06cca6072e593a0ac"):
             break
         except ClientError as e:
             print("You may have an error in your command, or the machine is not up yet. ")
-            time.sleep(10)
-
-    command_id = response['Command']['CommandId']
-
-    time.sleep(5)
-
-    output = ssm_client.get_command_invocation(
-        CommandId=command_id,
-        InstanceId=instance,
-    )
-
 
 def generate_git_commands(git_url=GIT_URL, start_command="sudo python3 awspython/app.py", pip3_packages=[], additional_commands=[]):
     commands = []
@@ -118,22 +109,17 @@ def generate_git_commands(git_url=GIT_URL, start_command="sudo python3 awspython
 
     # start program execution
     commands.append(start_command)
-    print(commands)
     return commands
 
 
-# response = ec2.describe_instances()
-# print(response)
 
-# send_command()
-
-# print(get_instance_ids())
 new_instance=provision_server()
 
 print("Waiting for instance to get in  running state....")
 
 while True:
     state = get_instance(new_instance)['State']['Code']
+    #16 is the code for running state
     if 16 == state:
         break
     time.sleep(60)
@@ -147,12 +133,18 @@ send_command_aws(commands=generate_git_commands(GIT_URL, pip3_packages=["flask"]
 time.sleep(60)
 
 URL = get_instance(new_instance)["PublicDnsName"]
-print('http://' + URL + ':5000')
-print("Testing...")
+print('   GIT_URL  :    http://' + URL + ':5000')
+print("Running Automated Testing...")
 r = requests.get('http://' + URL + ':5000')
-if r.status_code != 200:
+if r.status_code == 200:
+    print("Automated Test for website status check : PASSED ")
+else:
     raise Exception("Status Code not 200")
-if r.text != "Automation for the people":
+
+if r.text == "Automation for the people":
+    print("Automated Test for website text check : PASSED ")
+else:
     raise Exception("Text does not match")
+
 
 print("Deployment Succeeded.")

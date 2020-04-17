@@ -133,7 +133,7 @@ send_command_aws(commands=generate_git_commands(GIT_URL, pip3_packages=["flask"]
 time.sleep(60)
 
 URL = get_instance(new_instance)["PublicDnsName"]
-print('   GIT_URL  :    http://' + URL + ':5000')
+print('   Deployed Web App URL  :    http://' + URL + ':5000')
 print("Running Automated Testing...")
 r = requests.get('http://' + URL + ':5000')
 if r.status_code == 200:

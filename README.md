@@ -51,3 +51,25 @@ Creating an IAM role:
   3.  Click “Create role” and select “EC2.” For the purposes of this project, you’ll want to select “Administrator Access”.
   4.  Click through the rest of the steps to create a role.
 
+
+How to run:
+
+  Run the command : python app.py
+  from the directory which contains the file.(it needs to contain the credentials.csv file     as well)
+
+
+What is running:
+
+  It creates a EC2 instance on AWS with the given specifications with the web app deployed on the said URL until it is stopped or terminated
+
+
+How to cleanup:
+
+  Launch the console (log in as root) and navigate to the EC2 Dashboard ,Search for the instance that you created either by the public DNS that you use to test the webapp and right click on it -> Launch State -> Terminate.
+						 							
+  
+ 						
+					 				
+			
+		
+ 

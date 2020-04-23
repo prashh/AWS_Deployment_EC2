@@ -1,7 +1,7 @@
 # AWS_Deployment_EC2
-Static webpage hosting on AWS EC2 instance
+Static webpage hosting on AWS EC2 instance.
 
-**Prerequisites** :
+**Prerequisites :** 
   
   1.  Spin up your favorite Python IDE and create a new project.
   2.  Create your main project file and name it whatever you want — I chose “app.py” for simplicity.
@@ -11,7 +11,7 @@ Static webpage hosting on AWS EC2 instance
 This allows us to use Amazon’s SDK in our Python application
  
  
-**Github source:**
+**Github source :**
   
   1. Create a static webapp and make it public.
   2. Use the clone url(HTTPS) to retrive the code for deployment.
@@ -31,12 +31,12 @@ Before we can actually use anything on AWS, we need credentials for the AWS acco
   
   
 **Create key pairs :**
-  1.  Head over to your AWS dashboard and go to EC2->Network & Security-> Key pairs
-  2.  click “Create key pair.”
+  1.  Head over to your AWS dashboard and go to EC2 -> Network & Security -> Key pairs
+  2.  click “Create key pair”.
   3.  Enter a name and hit “Create.”
   
   
-To run commands on the server and open it to the Web, we have to create a security group and IAM role on AWS.    Go to your dashboard.
+To run commands on the server and open it to the Web, we have to create a security group and IAM role on AWS. Go to your dashboard.
 
 **Creating a security group :**
 
@@ -55,7 +55,7 @@ To run commands on the server and open it to the Web, we have to create a securi
 **How to run:**
 
   Run the command : python app.py
-  from the directory which contains the file.(it needs to contain the credentials.csv file     as well)
+  from the directory which contains the file.(It needs to contain the credentials.csv file as well)
 
 
 **What is running:**
@@ -65,7 +65,7 @@ To run commands on the server and open it to the Web, we have to create a securi
 
 **How to cleanup:**
 
-  Launch the console (log in as root) and navigate to the EC2 Dashboard ,Search for the instance that you created either by the public DNS that you use to test the webapp and right click on it -> Launch State -> Terminate.
+  Launch the console (log in as root) and navigate to the EC2 Dashboard, Search for the instance that you created by the public DNS that you use to test the webapp and right click on it -> Launch State -> Terminate.
 						 							
   
  						
